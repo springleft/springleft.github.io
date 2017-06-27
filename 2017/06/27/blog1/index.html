@@ -1,12 +1,8 @@
 
 
-  
 
 
 
-
-
-  
 
 
 <!doctype html>
@@ -20,9 +16,9 @@
   
   
   
-    <meta name="description" content="">
+    <meta name="description" content="懒加载什么是懒加载？懒加载也就是延迟加载。">
   
-  <title>Archives: 2017 [ 张春光的博客 ]</title>
+  <title>懒加载与预加载 [ 张春光的博客 ]</title>
   
   
     <link rel="shortcut icon" href="/favicon.ico">
@@ -41,6 +37,15 @@
 <body>
 <div class="side-navigate hide-area">
   
+  
+    <div class="item next">
+      <a href="/2017/06/03/hello-world/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        Markdown使用方法
+      </div>
+    </div>
   
 </div>
 <div id="outer-container" class="hide-area">
@@ -66,7 +71,7 @@
           </li>
         
           
-            <li class="active">
+            <li>
           
             <a href="/archives">文章</a>
             
@@ -112,96 +117,44 @@
     <div id="content-inner">
       
       
-  <article>
-    
-
-  <div id="recent-posts">
-    <h1>Archives
-    
-      <span class="posts-count">
-      Total
-      2
+  <article id="post">
+    <h1>懒加载与预加载</h1>
+    <p class="page-title-sub">
+      <span id = "post-title-date">Created at 2017-06-27</span>
       
-        posts
-      
-      </span>
-    
-    </h1>
-    
-    
-      
-      
-        
-      
-      
-    
+        <span id = "post-title-updated">Updated at 2017-06-27</span>
       
       
       
+    </p>
     
-    
-    
-      
-      
-        
-        <h3 class="archive-year-title">2017
-        
-          <span class="posts-count">
-          Total
-          2
-          
-            posts
-          
-          </span>
-        
-        </h3>
-      
-      <div class="post-title-item">
-  
-  <a href="/2017/06/27/blog1/">
-  
-    懒加载与预加载
-  
-  </a>
-  <p class="page-title-sub">
-    <span id = "post-title-date">6-27</span>
-    
-    
-    
-      <br>
-      
-      
-    
-  </p>
-  
-</div>
-    
-      
-      
-      <div class="post-title-item">
-  
-  <a href="/2017/06/03/hello-world/">
-  
-    Markdown使用方法
-  
-  </a>
-  <p class="page-title-sub">
-    <span id = "post-title-date">6-3</span>
-    
-    
-    
-      <br>
-      
-      
-    
-  </p>
-  
-</div>
-    
-  </div>
-
+    <h1 id="懒加载"><a href="#懒加载" class="headerlink" title="懒加载"></a>懒加载</h1><h2 id="什么是懒加载？"><a href="#什么是懒加载？" class="headerlink" title="什么是懒加载？"></a>什么是懒加载？</h2><p>懒加载也就是延迟加载。</p>
 
   </article>
+  <div class="random-toc-area">
+  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">Show TOC</button>
+  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
+  <div class="random-toc">
+    <h2>Table of Content</h2>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#懒加载"><span class="toc-text">懒加载</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是懒加载？"><span class="toc-text">什么是懒加载？</span></a></li></ol></li></ol>
+  </div>
+</div>
+
+  
+<nav id="pagination">
+  
+
+  
+
+  
+    <a href="/2017/06/03/hello-world/" class="next">Next post Markdown使用方法 &rarr;</a>
+  
+</nav>
+
+  <!-- JiaThis Button BEGIN -->
+
+<!-- JiaThis Button END -->
+
 
       
       
@@ -337,6 +290,8 @@ var unsplashConfig = {"gravity":"north"};
 var turnoffBackgroundImage = false;
 
 
+
+  turnoffBackgroundImage = true;
 
 
 var backgroundColor = "34495E";
