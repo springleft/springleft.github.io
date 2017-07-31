@@ -121,9 +121,9 @@ HTTP是一个应用层协议，由请求和响应构成，是一个标准的客�
   <article id="post">
     <h1>HTTP协议</h1>
     <p class="page-title-sub">
-      <span id = "post-title-date">撰写于 2017-07-31</span>
+      <span id = "post-title-date">Created at 2017-07-31</span>
       
-        <span id = "post-title-updated">修改于 2017-07-31</span>
+        <span id = "post-title-updated">Updated at 2017-07-31</span>
       
       
       
@@ -159,7 +159,7 @@ HTTP是一个应用层协议，由请求和响应构成，是一个标准的客�
 <li>一般来说，尽量避免使用GET方式提交表单，因为有可能会导致安全问题。比如说在登录表单中GET方式，用户 密码将在地址栏中暴露无遗。但是在分页程序中，用GET方式就比用POST好</li>
 <li>安全的和幂等的。所谓安全的意味着该操作用于获取信息而非修改信息。幂等的意味着对同一URL的多个请求应该返回同样的结果。完整的定义并不像看起来那样严格。换句话说，GET请求一般不应产生副作用。从根本上讲，其目标是当用户打开一个链接时，她可以确信从自身的角度来看没有改变资源。比如，新闻站点的头版不断更新。虽然第二次请求会返回不同的一批新闻，该操作仍然被认为是安全的和幂等的，因为它总是返回当前的新闻。反之亦然。POST请求就不那么轻松了。POST表示可能改变服务器上的资源的请求。仍然以新闻站点为例，读者对文章的注解应该通过POST请求实现，因为在注解提交之后站点已经不同了（比方说文章下面出现一条注解）。</li>
 </ol>
-<h2 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h2><p>```python<br><strong>1×× ：请求收到，继续处理</strong><br>   100—-客户必须继续发出请求<br>   101—-客户要求服务器根据请求转换HTPP协议版本<br><strong>2×× ：操作成功收到，分析、接受</strong><br>   200—-交易成功<br>   201—-提示知道新文件的URL<br>   202—-接受和处理、但处理未完成<br>   203—-返回信息不确定或不完整<br>   204—-请求收到，但返回信息为空<br>   205—-服务器完成了请求，用户代理必须复位当前已经浏览过的文件<br>   206—-服务器已经完成了部分用户的GET请求<br><strong>3×× ：完成此请求必须进一步处理</strong><br>   300—-请求的资源可在多处得到<br>   301—-删除请求数据<br>   302—-在其他地址发现了请求数据<br>   303—-建议客户访问其他URL或访问方式<br>   304—-客户端已经执行了GET，但文件未变化<br>   305—-请求的资源必须从服务器 指定的地址得到<br>   306—-前一版本HTTP中使用的代码，现在版本中不使用<br>   307—-申明请求的资源临时性删除<br><strong>4×× ：请求包含一个错误语法或不能完成</strong><br>   400—-错误请求，如语法错误<br>   401—-未授权<br>   402—-保留有效ChargeTo头响应<br>   403—-禁止访问<br>   404—-没有发现文件、查询或URL<br>   405—-用户在Request-Line字段定义的方法不允许<br><strong>5×× ：服务器执行一个完全有效请求失败</strong><br>   500—-内部服务器错误<br>   501—-未实现<br>   502—-网关错误</p>
+<h2 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h2><p><strong>1×× ：请求收到，继续处理</strong><br>   100—-客户必须继续发出请求<br>   101—-客户要求服务器根据请求转换HTPP协议版本<br><strong>2×× ：操作成功收到，分析、接受</strong><br>   200—-交易成功<br>   201—-提示知道新文件的URL<br>   202—-接受和处理、但处理未完成<br>   203—-返回信息不确定或不完整<br>   204—-请求收到，但返回信息为空<br>   205—-服务器完成了请求，用户代理必须复位当前已经浏览过的文件<br>   206—-服务器已经完成了部分用户的GET请求<br><strong>3×× ：完成此请求必须进一步处理</strong><br>   300—-请求的资源可在多处得到<br>   301—-删除请求数据<br>   302—-在其他地址发现了请求数据<br>   303—-建议客户访问其他URL或访问方式<br>   304—-客户端已经执行了GET，但文件未变化<br>   305—-请求的资源必须从服务器 指定的地址得到<br>   306—-前一版本HTTP中使用的代码，现在版本中不使用<br>   307—-申明请求的资源临时性删除<br><strong>4×× ：请求包含一个错误语法或不能完成</strong><br>   400—-错误请求，如语法错误<br>   401—-未授权<br>   402—-保留有效ChargeTo头响应<br>   403—-禁止访问<br>   404—-没有发现文件、查询或URL<br>   405—-用户在Request-Line字段定义的方法不允许<br><strong>5×× ：服务器执行一个完全有效请求失败</strong><br>   500—-内部服务器错误<br>   501—-未实现<br>   502—-网关错误</p>
 <h2 id="请求头-Request-Headers"><a href="#请求头-Request-Headers" class="headerlink" title="请求头(Request Headers)"></a>请求头(Request Headers)</h2><p>Accept：浏览器可接受的MIME类型；</p>
 <p>Accept-Charset：浏览器可接受的字符集；</p>
 <p>Accept-Encoding：浏览器能够进行解码的数据编码方式，比如gzip。Servlet能够向支持gzip的浏览器返回经gzip编码的HTML页面。许多情形下这可以减少5到10倍的下载时间；</p>
@@ -183,13 +183,14 @@ HTTP是一个应用层协议，由请求和响应构成，是一个标准的客�
 <p>Expires：指明应该在什么时候认为文档已经过期，从而不再缓存它</p>
 <p>Last-Modified：文档的最后改动时间。客户可以通过If-Modified-Since请求头提供一个日期，该请求将被视为一个条件GET，只有改动时间迟于指定时间的文档才会返回，否则返回一个304（NotModified）状态。Last-Modified也可用setDateHeader方法来设置；</p>
 <p>Location：表示客户应当到哪里去提取文档。Location通常不是直接设置的，而是通过HttpServletResponse的sendRedirect方法，该方法同时设置状态代码为302；</p>
+<p>Refresh：表示浏览器应该在多少时间之后刷新文档，以秒计。除了刷新当前文档之外，你还可以通过setHeader(“Refresh”,”5;URL=<a href="http://host/path&quot;)让浏览器读取指定的页面。注意这种功能通常是通过设置HTML页面HEAD区的" target="_blank" rel="external">http://host/path&quot;)让浏览器读取指定的页面。注意这种功能通常是通过设置HTML页面HEAD区的</a><meta http-equiv="Refresh" content="5;URL=http://host/path">实现，这是因为，自动刷新或重定向对于那些不能使用CGI或Servlet的HTML编写者十分重要。但是，对于Servlet来说，直接设置Refresh头更加方便。注意Refresh的意义是“N秒之后刷新本页面或访问指定页面”，而不是“每隔N秒刷新本页面或访问指定页面”。因此，连续刷新要求每次都发送一个Refresh头，而发送204状态代码则可以阻止浏览器继续刷新，不管是使用Refresh头还是<meta http-equiv="Refresh" ...="">。注意Refresh头不属于HTTP 1.1正式规范的一部分，而是一个扩展，但Netscape和IE都支持它。</p>
 
   </article>
   <div class="random-toc-area">
-  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">显示目录</button>
-  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">隐藏目录</button>
+  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">Show TOC</button>
+  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
   <div class="random-toc">
-    <h2>目录</h2>
+    <h2>Table of Content</h2>
     <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#介绍"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#工作流程"><span class="toc-text">工作流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#请求方式"><span class="toc-text">请求方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GET和POST区别"><span class="toc-text">GET和POST区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#状态码"><span class="toc-text">状态码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#请求头-Request-Headers"><span class="toc-text">请求头(Request Headers)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#响应头（Response-Headers"><span class="toc-text">响应头（Response Headers)</span></a></li></ol>
   </div>
 </div>
@@ -201,7 +202,7 @@ HTTP是一个应用层协议，由请求和响应构成，是一个标准的客�
   
 
   
-    <a href="/2017/07/31/svn-git/" class="next">下一篇 SVN和Git &rarr;</a>
+    <a href="/2017/07/31/svn-git/" class="next">Next post SVN和Git &rarr;</a>
   
 </nav>
 
