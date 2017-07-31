@@ -16,7 +16,7 @@
   
   
   
-    <meta name="description" content="SVN和GitSVN（开放源代码的版本控制系统）一些数据放置在一个中央资料档案库中，这个档案库很像一个普通的文件服务器，不过它会记住每一次文件的变动。这样你就可以把档案恢复到旧版本，或者是浏览器文件的变动历史。集中式代码管理核心是服务器，所有开发者在开始新一天的工作之前必须从服务器获取代码，然后开发，最后解决冲突，提交。所有的版本信息都放在服务器上。如果脱离了服务器，开发者基本上可以说是无法...">
+    <meta name="description" content="SVN（开放源代码的版本控制系统）一些数据放置在一个中央资料档案库中，这个档案库很像一个普通的文件服务器，不过它会记住每一次文件的变动。这样你就可以把档案恢复到旧版本，或者是浏览器文件的变动历史。集中式代码管理核心是服务器，所有开发者在开始新一天的工作之前必须从服务器获取代码，然后开发，最后解决冲突，提交。所有的版本信息都放在服务器上。如果脱离了服务器，开发者基本上可以说是无法工作的。新手工...">
   
   <title>SVN和Git [ 张春光的博客 ]</title>
   
@@ -120,15 +120,15 @@
   <article id="post">
     <h1>SVN和Git</h1>
     <p class="page-title-sub">
-      <span id = "post-title-date">Created at 2017-07-31</span>
+      <span id = "post-title-date">撰写于 2017-07-31</span>
       
-        <span id = "post-title-updated">Updated at 2017-07-31</span>
+        <span id = "post-title-updated">修改于 2017-07-31</span>
       
       
       
     </p>
     
-    <h1 id="SVN和Git"><a href="#SVN和Git" class="headerlink" title="SVN和Git"></a><strong>SVN和Git</strong></h1><h3 id="SVN（开放源代码的版本控制系统）"><a href="#SVN（开放源代码的版本控制系统）" class="headerlink" title="SVN（开放源代码的版本控制系统）"></a><strong>SVN（开放源代码的版本控制系统）</strong></h3><p>一些数据放置在一个中央资料档案库中，这个档案库很像一个普通的文件服务器，不过它会记住每一次文件的变动。这样你就可以把档案恢复到旧版本，或者是浏览器文件的变动历史。集中式代码管理核心是服务器，所有开发者在开始新一天的工作之前必须从服务器获取代码，然后开发，最后解决冲突，提交。所有的版本信息都放在服务器上。如果脱离了服务器，开发者基本上可以说是无法工作的。新手工作问题：</p>
+    <h3 id="SVN（开放源代码的版本控制系统）"><a href="#SVN（开放源代码的版本控制系统）" class="headerlink" title="SVN（开放源代码的版本控制系统）"></a><strong>SVN（开放源代码的版本控制系统）</strong></h3><p>一些数据放置在一个中央资料档案库中，这个档案库很像一个普通的文件服务器，不过它会记住每一次文件的变动。这样你就可以把档案恢复到旧版本，或者是浏览器文件的变动历史。集中式代码管理核心是服务器，所有开发者在开始新一天的工作之前必须从服务器获取代码，然后开发，最后解决冲突，提交。所有的版本信息都放在服务器上。如果脱离了服务器，开发者基本上可以说是无法工作的。新手工作问题：</p>
 <ol>
 <li>从服务器下载项目组最新代码</li>
 <li>进入自己的分支，进行工作，每隔一个小时向服务器自己的分支提交一次代码（很多人都有这个习惯。因为有时候自己对代码改来改去，最后又想还原到前一个小时的版本，或者看看前一个小时的自己修改了哪些代码，就需要这样做了）。</li>
@@ -158,11 +158,11 @@
 
   </article>
   <div class="random-toc-area">
-  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">Show TOC</button>
-  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
+  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">显示目录</button>
+  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">隐藏目录</button>
   <div class="random-toc">
-    <h2>Table of Content</h2>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SVN和Git"><span class="toc-text">SVN和Git</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SVN（开放源代码的版本控制系统）"><span class="toc-text">SVN（开放源代码的版本控制系统）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Git-分发式版本控制系统）"><span class="toc-text">Git(分发式版本控制系统）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#区别"><span class="toc-text">区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优缺点"><span class="toc-text">优缺点</span></a></li></ol></li></ol></li></ol>
+    <h2>目录</h2>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#SVN（开放源代码的版本控制系统）"><span class="toc-text">SVN（开放源代码的版本控制系统）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Git-分发式版本控制系统）"><span class="toc-text">Git(分发式版本控制系统）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#区别"><span class="toc-text">区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优缺点"><span class="toc-text">优缺点</span></a></li></ol>
   </div>
 </div>
 
@@ -173,7 +173,7 @@
   
 
   
-    <a href="/2017/06/03/hello-world/" class="next">Next post Markdown使用方法 &rarr;</a>
+    <a href="/2017/06/03/hello-world/" class="next">下一篇 Markdown使用方法 &rarr;</a>
   
 </nav>
 
