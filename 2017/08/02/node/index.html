@@ -1,0 +1,403 @@
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="zh_CN">
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="author" content="Spring Hush">
+  
+  
+  
+  
+    <meta name="description" content="Node介绍Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。Node.js 使用了一个事件驱动、非阻塞式 I/O 的模型，使其轻量又高效。Node.js 的包管理器 npm，是全球最大的开源库生态系统。
+内置模块
+Path模块—用于处理文件路径
+Until模块—弥补JS功能不足，新增API
+FS模块—文件操作的API
+Events模块
+HTTP模块
+
+...">
+  
+  <title>Node [ 张春光的博客 ]</title>
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+  <link rel="stylesheet" href="/css/random.css">
+<link rel="stylesheet" href="/css/vegas.min.css">
+<link rel="stylesheet" href="/css/highlight-railscasts.css">
+<link rel="stylesheet" href="/css/jquery.fancybox.css">
+<link rel="stylesheet" href="/css/iconfont/iconfont.css">
+<link rel="stylesheet" href="/css/jquery.fancybox-thumbs.css">
+<link rel="stylesheet" href="/css/plyr.css">
+  
+</head>
+
+<body>
+<div class="side-navigate hide-area">
+  
+  
+    <div class="item next">
+      <a href="/2017/07/31/http/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        HTTP协议
+      </div>
+    </div>
+  
+</div>
+<div id="outer-container" class="hide-area">
+<div id="container">
+  <div id="menu-outer" class="slide-down">
+    <div id="menu-inner">
+      <div id="brand">
+        
+        <a onClick="openUserCard()">
+          <img id="avatar" src="http://tva3.sinaimg.cn/crop.0.0.720.720.180/005L6qyrjw8f1jibi51z6j30k00k0dgt.jpg"/>
+          <div id="homelink">张春光的博客</div>
+        </a>
+      </div>
+      <div id="menu-list">
+        <ul>
+        
+        
+          
+            <li>
+          
+            <a href="/index.html">首页</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/archives">文章</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/tags">标签</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/categories">作品</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/about">关于</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="https://github.com/springleft">Github</a>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div id="show-menu">
+        <button>Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="content-outer">
+    <div id="content-inner">
+      
+      
+  <article id="post">
+    <h1>Node</h1>
+    <p class="page-title-sub">
+      <span id = "post-title-date">Created at 2017-08-02</span>
+      
+        <span id = "post-title-updated">Updated at 2017-08-02</span>
+      
+      
+      
+    </p>
+    
+    <h2 id="Node介绍"><a href="#Node介绍" class="headerlink" title="Node介绍"></a>Node介绍</h2><p>Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。<br>Node.js 使用了一个事件驱动、非阻塞式 I/O 的模型，使其轻量又高效。<br>Node.js 的包管理器 npm，是全球最大的开源库生态系统。</p>
+<h2 id="内置模块"><a href="#内置模块" class="headerlink" title="内置模块"></a>内置模块</h2><ul>
+<li>Path模块—用于处理文件路径</li>
+<li>Until模块—弥补JS功能不足，新增API</li>
+<li>FS模块—文件操作的API</li>
+<li>Events模块</li>
+<li>HTTP模块</li>
+</ul>
+<h2 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h2><p><strong>路由句柄</strong><br>可以为请求处理提供多个回调函数，其行为类似中间件。唯一的区别是这些回调函数有可能调用next（‘router’）方法而略过其他路由回调函数，可以利用该机制为路由定义前提条件，如果在现有路径上继续执行没有意义，则可将控制权交给剩下的路径。路由句柄有多种形式，可以是一个函数、一个函数数组，或者两者混合。</p>
+<h2 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h2><p>中间件是一个函数，它可以访问请求对象（request object（req)),响应对象（request object（res)),和web应用中处于请求-响应循环流程中的中间件，一般命名为next的变量。<br>功能包括：</p>
+<ul>
+<li>执行任何代码</li>
+<li>修改请求和响应对象</li>
+<li>终结请求-响应循环</li>
+<li>调用堆栈中的下一个中间件</li>
+</ul>
+<p>如果当前中间件没有中间件没有终结请求-响应循环，则必须调用next（）方法将控制权交给下一个中间件，否则请求就会挂起。<br>Express应用可以使用如下几种中间件：</p>
+<blockquote>
+<ul>
+<li>应用级中间件</li>
+<li>路由级中间件</li>
+<li>错误处理中间件</li>
+<li>内置中间件</li>
+<li>第三方中间件</li>
+</ul>
+</blockquote>
+<h3 id="应用级中间件"><a href="#应用级中间件" class="headerlink" title="应用级中间件"></a>应用级中间件</h3><p>应用级中间件绑定到app对象使用app.use()和app.METHOD(),其中，METHOD是需要处理的HTTP请求的方法，例如GET,PUT,POST等等<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">var app = express();</div><div class="line"></div><div class="line">// 没有挂载路径的中间件，应用的每个请求都会执行该中间件</div><div class="line">app.use(function (req, res, next) &#123;</div><div class="line">  console.log(<span class="string">'Time:'</span>, Date.now());</div><div class="line">  next();</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// 挂载至 /user/:id 的中间件，任何指向 /user/:id 的请求都会执行它</div><div class="line">app.use(<span class="string">'/user/:id'</span>, function (req, res, next) &#123;</div><div class="line">  console.log(<span class="string">'Request Type:'</span>, req.method);</div><div class="line">  next();</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// 路由和句柄函数(中间件系统)，处理指向 /user/:id 的 GET 请求</div><div class="line">app.get(<span class="string">'/user/:id'</span>, function (req, res, next) &#123;</div><div class="line">  res.send(<span class="string">'USER'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h3 id="路由中间件"><a href="#路由中间件" class="headerlink" title="路由中间件"></a>路由中间件</h3><p>路由级中间件和应用级中间件一样，只是它绑定的对象为express.Router()。</p>
+<pre><code>var router = express.Router();
+</code></pre><p>路由级使用router.use()或router.VERB()加载<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">var app = express();</div><div class="line">var router = express.Router();</div><div class="line"></div><div class="line">// 没有挂载路径的中间件，通过该路由的每个请求都会执行该中间件</div><div class="line">router.use(function (req, res, next) &#123;</div><div class="line">  console.log(<span class="string">'Time:'</span>, Date.now());</div><div class="line">  next();</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// 一个中间件栈，显示任何指向 /user/:id 的 HTTP 请求的信息</div><div class="line">router.use(<span class="string">'/user/:id'</span>, function(req, res, next) &#123;</div><div class="line">  console.log(<span class="string">'Request URL:'</span>, req.originalUrl);</div><div class="line">  next();</div><div class="line">&#125;, function (req, res, next) &#123;</div><div class="line">  console.log(<span class="string">'Request Type:'</span>, req.method);</div><div class="line">  next();</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// 一个中间件栈，处理指向 /user/:id 的 GET 请求</div><div class="line">router.get(<span class="string">'/user/:id'</span>, function (req, res, next) &#123;</div><div class="line">  // 如果 user id 为 <span class="number">0</span>, 跳到下一个路由</div><div class="line">  <span class="keyword">if</span> (req.params.id == <span class="number">0</span>) next(<span class="string">'route'</span>);</div><div class="line">  // 负责将控制权交给栈中下一个中间件</div><div class="line">  <span class="keyword">else</span> next(); //</div><div class="line">&#125;, function (req, res, next) &#123;</div><div class="line">  // 渲染常规页面</div><div class="line">  res.render(<span class="string">'regular'</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// 处理 /user/:id， 渲染一个特殊页面</div><div class="line">router.get(<span class="string">'/user/:id'</span>, function (req, res, next) &#123;</div><div class="line">  console.log(req.params.id);</div><div class="line">  res.render(<span class="string">'special'</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// 将路由挂载至应用</div><div class="line">app.use(<span class="string">'/'</span>, router);</div></pre></td></tr></table></figure></p>
+<h3 id="错误处理中间件"><a href="#错误处理中间件" class="headerlink" title="错误处理中间件"></a>错误处理中间件</h3><p>错误处理中间件和其他中间件定义类似，只是要使用4个参数，而不是3个，其如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">app.use(function(err, req, res, next) &#123;</div><div class="line">  console.error(err.stack);</div><div class="line">  res.status(<span class="number">500</span>).send(<span class="string">'Something broke!'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h3 id="内置中间件"><a href="#内置中间件" class="headerlink" title="内置中间件"></a>内置中间件</h3><p>express.static(root,[options])是Express唯一的内置中间件。基于serve-static，负责Express应用中托管静态资源。参数root指提供静态资源的根目录，可选的options参数的属性如下：</p>
+<blockquote>
+<ul>
+<li><p>dotfiles 是否对外输出文件名以点（·）开头的文件。可选值为“allow”、“deny”、“ignore”</p>
+</li>
+<li><p>etag 是否启动etag生成</p>
+</li>
+<li>extensions 设置文件扩展名备份选项</li>
+<li>index 发送目录索引文件，设置为flase禁用目录索引</li>
+<li>lastModified 设置Last-Modified头为文件在操作系统上的最后修改日期。可能为true或false</li>
+<li>maxAge 以毫秒或者其字符串格式设置Cache-Control头的max-age属性</li>
+<li>redirect 当路径为目录时，重定向至”/“</li>
+<li>setHeaders 设置HTTP头以提前文件的函数</li>
+</ul>
+</blockquote>
+<h3 id="第三方中间件"><a href="#第三方中间件" class="headerlink" title="第三方中间件"></a>第三方中间件</h3><p>通过使用第三方中间件从而为Express应用增加更多功能。安装所需功能的node模块，并在应用中加载，可以在应用级加载，也可以在路由级加载。</p>
+<blockquote>
+<p>Connect是一个node中间件（middleware）框架。如果把一个http处理过程比作是污水处理，中间件就像是一层层的过滤网。每个中间件在http处理过程中通过改写request或（和）response的数据、状态，实现了特定的功能。</p>
+</blockquote>
+<p>！<a href="http://blog.fens.me/wp-content/uploads/2013/09/connect-middleware.png" target="_blank" rel="external">file-list</a></p>
+<p>22个内置中间件列表</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">logger: 用户请求日志中间件</div><div class="line">csrf: 跨域请求伪造保护中间件</div><div class="line">compress: gzip压缩中间件</div><div class="line">basicAuth: basic认证中间件</div><div class="line">bodyParser: 请求内容解析中间件</div><div class="line">json: JSON解析中间件</div><div class="line">urlencoded: application/x-www-form-urlencode请求解析中间件</div><div class="line">multipart: multipart/form-data请求解析中间件</div><div class="line">timeout: 请求超时中间件</div><div class="line">cookieParser: cookie解析中间件</div><div class="line">session: 会话管理中间件</div><div class="line">cookieSession: 基于cookies的会话中间件</div><div class="line">methodOverride: HTTP伪造中间件</div><div class="line">reponseTime: 计算响应时间中间件</div><div class="line">staticCache: 缓存中间件</div><div class="line">static: 静态文件处理中间件</div><div class="line">directory: 目录列表中间件</div><div class="line">vhost: 虚拟二级域名映射中间件</div><div class="line">favicon: 网页图标中间件</div><div class="line">limit: 请求内容大小限制中间件</div><div class="line">query: URL解析中间件</div><div class="line">errorHadnler: 错误处理中间件</div></pre></td></tr></table></figure>
+<h2 id="模板引擎"><a href="#模板引擎" class="headerlink" title="模板引擎"></a>模板引擎</h2><p>需要在应用中进行如下设置才能让Express渲染模板文件：</p>
+<ul>
+<li>views 放模板文件的目录，比如：app.set(‘views’,’./views’)</li>
+<li>view engine 模板引擎，比如：app.set(‘view engine’,’ejs’)s</li>
+</ul>
+
+  </article>
+  <div class="random-toc-area">
+  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">Show TOC</button>
+  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
+  <div class="random-toc">
+    <h2>Table of Content</h2>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Node介绍"><span class="toc-text">Node介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内置模块"><span class="toc-text">内置模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#路由"><span class="toc-text">路由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#中间件"><span class="toc-text">中间件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#应用级中间件"><span class="toc-text">应用级中间件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#路由中间件"><span class="toc-text">路由中间件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#错误处理中间件"><span class="toc-text">错误处理中间件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#内置中间件"><span class="toc-text">内置中间件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第三方中间件"><span class="toc-text">第三方中间件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模板引擎"><span class="toc-text">模板引擎</span></a></li></ol>
+  </div>
+</div>
+
+  
+<nav id="pagination">
+  
+
+  
+
+  
+    <a href="/2017/07/31/http/" class="next">Next post HTTP协议 &rarr;</a>
+  
+</nav>
+
+  <!-- JiaThis Button BEGIN -->
+
+<!-- JiaThis Button END -->
+
+
+      
+      
+      
+    </div>
+  </div>
+
+  <div id="bottom-outer">
+    <div id="bottom-inner">
+      Site by Spring Hush using
+      <a href="http://hexo.io">Hexo</a> & <a href="https://github.com/stiekel/hexo-theme-random">Random</a>
+      <br>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+
+<div id="user-card">
+  <div class="center-field">
+    <img class="avatar" src="http://tva3.sinaimg.cn/crop.0.0.720.720.180/005L6qyrjw8f1jibi51z6j30k00k0dgt.jpg">
+    <p id="description"></p>
+    <ul class="social-icon">
+  
+  
+    <li>
+      <a href="https://github.com/springleft">
+        
+          <i class="icon iconfont github">&#xe606;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="https://coding.net/u/springleft">
+        
+          <i class="icon iconfont coding">&#xe607;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="https://twitter.com/springhush">
+        
+          <i class="icon iconfont twitter">&#xe600;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="http://weibo.com/5276683999">
+        
+          <i class="icon iconfont weibo">&#xe602;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="http://www.douban.com/people/Stiekel/">
+        
+          <i class="icon iconfont douban">&#xe60f;</i>
+        
+      </a>
+    </li>
+  
+</ul>
+  </div>
+</div>
+
+
+<div id="btn-view">Hide</div>
+
+<script>
+// is trigger analytics / tongji script
+var isIgnoreHost = false;
+
+if(window && window.location && window.location.host) {
+  isIgnoreHost = ["localhost","127.0.0.1"].some(function(address){
+    return 0 === window.location.host.indexOf(address);
+  });
+}
+
+var isTriggerAnalytics = !( true && isIgnoreHost );
+
+</script>
+
+
+
+
+  
+  
+    <script src="/js/jquery-2.2.3.min.js"></script>
+  
+    <script src="/js/vegas.min.js"></script>
+  
+    <script src="/js/random.js"></script>
+  
+    <script src="/js/highlight.pack.js"></script>
+  
+    <script src="/js/jquery.mousewheel.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox-thumbs.js"></script>
+  
+    <script src="/js/plyr.js"></script>
+  
+
+<script>
+
+  // fancybox
+  var backgroundImages = [];
+  
+  $('#post').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox') || $(this).parent().hasClass('fancybox-thumb')) return;
+      var alt = this.alt || this.title;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'post' + i);
+    });
+  });
+  $(".fancybox").fancybox();
+
+var vegasConfig = {"preload­Image":true,"transition":["slideLeft2","slideRight2","flash2"],"timer":true,"delay":5000,"shuffle":true,"count":28};
+var unsplashConfig = {"gravity":"north"};
+// is show background images
+var turnoffBackgroundImage = false;
+
+
+
+  turnoffBackgroundImage = true;
+
+
+var backgroundColor = "34495E";
+
+$(".fancybox-thumb").fancybox({
+  prevEffect: 'none',
+  nextEffect: 'none',
+  helpers: {
+    title: {
+      type: 'outside'
+    },
+    thumbs: {
+      width: 50,
+      height: 50
+    }
+  }
+});
+
+// show video with plyr
+$(".video-container iframe").each(function(i){
+  var url = $(this).attr('src');
+  var id = url.split('/').pop();
+  var plyrContainer = document.createElement('div');
+  plyrContainer.className = 'plyr';
+  var plyrElement = document.createElement('div');
+  plyrElement.dataset.videoId = id;
+  switch(true) {
+    case url.search('youtube.com') >= 0:
+      plyrElement.dataset.type = 'youtube';
+      break;
+    case url.search('vimeo.com') >= 0:
+      plyrElement.dataset.type = 'vimeo';
+      break;
+    default:
+      return;
+  };
+  plyrContainer.appendChild(plyrElement);
+  $(this).parent().html(plyrContainer);
+});
+plyr.setup('.plyr', {iconUrl: '/css/sprite.svg'});
+</script>
+</body>
+</html>
+
